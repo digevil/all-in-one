@@ -1,9 +1,9 @@
 package org.digevil.allinone.classic.web;
 
+import com.google.common.collect.ImmutableMap;
+import org.digevil.allinone.classic.service.IUserService;
 import org.digevil.allinone.core.model.Hello;
 import org.digevil.allinone.core.model.User;
-import org.digevil.allinone.classic.service.IUserService;
-import com.google.common.collect.ImmutableMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,18 +13,19 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping(path = "/api", produces = "application/json")
+@CrossOrigin(origins = "*")
 public class ApiController {
 
     private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong();
+    private final AtomicLong helloCounter = new AtomicLong();
 
     @Autowired
     private IUserService userService;
 
     @GetMapping("/hello")
     public Hello hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return new Hello(counter.incrementAndGet(), String.format(template, name));
+        return new Hello(helloCounter.incrementAndGet(), String.format(template, name));
     }
 
     @GetMapping("/user/all")

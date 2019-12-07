@@ -2,7 +2,6 @@ package org.digevil.allinone.classic.repo;
 
 import org.apache.ibatis.annotations.*;
 import org.digevil.allinone.core.model.User;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;

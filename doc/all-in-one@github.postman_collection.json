@@ -1,0 +1,341 @@
+{
+	"info": {
+		"_postman_id": "21b45aec-08d8-463b-ad8b-dcfe2de2a8b7",
+		"name": "all-in-one@github",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "app-classic",
+			"item": [
+				{
+					"name": "hello",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "test",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{app-classic.host}}/api/hello?name=toni",
+							"protocol": "http",
+							"host": [
+								"{{app-classic.host}}"
+							],
+							"path": [
+								"api",
+								"hello"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "toni"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"type": "text",
+								"value": "test"
+							}
+						],
+						"url": {
+							"raw": "http://{{app-classic.host}}/api/user/all",
+							"protocol": "http",
+							"host": [
+								"{{app-classic.host}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users all paged",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"type": "text",
+								"value": "test"
+							}
+						],
+						"url": {
+							"raw": "http://{{app-classic.host}}/api/user/all/paged?pageSize=1&pageNum=1",
+							"protocol": "http",
+							"host": [
+								"{{app-classic.host}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"all",
+								"paged"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "1"
+								},
+								{
+									"key": "pageNum",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"type": "text",
+								"value": "test"
+							}
+						],
+						"url": {
+							"raw": "http://{{app-classic.host}}/api/user/{{user_id}}",
+							"protocol": "http",
+							"host": [
+								"{{app-classic.host}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users insert",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9ad07c8d-260f-4622-b40f-5d25e4a98678",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"user_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"type": "text",
+								"value": "test"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test\"\n}"
+						},
+						"url": {
+							"raw": "http://{{app-classic.host}}/api/user",
+							"protocol": "http",
+							"host": [
+								"{{app-classic.host}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"type": "text",
+								"value": "test"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"{{user_id}}\",\n    \"name\": \"test_updated\"\n}"
+						},
+						"url": {
+							"raw": "http://{{app-classic.host}}/api/user/{{user_id}}",
+							"protocol": "http",
+							"host": [
+								"{{app-classic.host}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"type": "text",
+								"value": "test"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{app-classic.host}}/api/user/{{user_id}}",
+							"protocol": "http",
+							"host": [
+								"{{app-classic.host}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "gateway-scg",
+			"item": [
+				{
+					"name": "/api/api/hello",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"type": "text",
+								"value": "test"
+							}
+						],
+						"url": {
+							"raw": "http://{{gateway-scg.host}}/api/api/hello?name=toni",
+							"protocol": "http",
+							"host": [
+								"{{gateway-scg.host}}"
+							],
+							"path": [
+								"api",
+								"api",
+								"hello"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "toni"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"type": "text",
+								"value": "test",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{gateway-scg.host}}/get",
+							"protocol": "http",
+							"host": [
+								"{{gateway-scg.host}}"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actuator/gateway/routes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"type": "text",
+								"value": "test",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{gateway-scg.host}}/get",
+							"protocol": "http",
+							"host": [
+								"{{gateway-scg.host}}"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

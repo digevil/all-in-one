@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 /**
  * 参考:
  * https://cloud.spring.io/spring-cloud-gateway/reference/html/
+ * https://www.devglan.com/spring-cloud/spring-cloud-gateway
  */
 @SpringBootApplication
 public class GatewayScgApplication {

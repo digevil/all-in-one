@@ -15,6 +15,8 @@ public interface IUserService {
 
     User findById(UUID id);
 
+    Page<User> findByExample(User example, Pageable pageable);
+
     UUID insert(User user);
 
     void update(User user);

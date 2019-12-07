@@ -40,6 +40,11 @@ public class ApiController {
         return userService.findAllPaged(PageRequest.of(pageNum, pageSize));
     }
 
+    @PostMapping("/user/query/paged")
+    public Page<User> findUsersByExampleAndPage(@RequestBody User example, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+        return userService.findByExample(example, PageRequest.of(pageNum, pageSize));
+    }
+
     @GetMapping("/user/{id}")
     public User findUserById(@PathVariable UUID id) {
         return userService.findById(id);

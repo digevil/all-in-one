@@ -30,12 +30,18 @@ public class SimpleUserService implements IUserService {
          * 分页
          */
         com.github.pagehelper.Page pages = PageHelper.startPage(pageable.getPageNumber(), pageable.getPageSize());
-        return new PageImpl<>(userMapper.findAllPaged(pageable), pageable, pages.getTotal());
+        return new PageImpl<>(userMapper.findAllPaged(), pageable, pages.getTotal());
     }
 
     @Override
     public User findById(UUID id) {
         return userMapper.findById(id);
+    }
+
+    @Override
+    public Page<User> findByExample(User example, Pageable pageable) {
+        com.github.pagehelper.Page pages = PageHelper.startPage(pageable.getPageNumber(), pageable.getPageSize());
+        return new PageImpl<>(userMapper.findByExample(example), pageable, pages.getTotal());
     }
 
     @Override

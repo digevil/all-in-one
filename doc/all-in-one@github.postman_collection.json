@@ -103,6 +103,52 @@
 					"response": []
 				},
 				{
+					"name": "users by example",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"type": "text",
+								"value": "test"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"toni\"\n}"
+						},
+						"url": {
+							"raw": "http://{{app-classic.host}}/api/user/query/paged?pageSize=1&pageNum=1",
+							"protocol": "http",
+							"host": [
+								"{{app-classic.host}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"query",
+								"paged"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "1"
+								},
+								{
+									"key": "pageNum",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "users by id",
 					"request": {
 						"method": "GET",

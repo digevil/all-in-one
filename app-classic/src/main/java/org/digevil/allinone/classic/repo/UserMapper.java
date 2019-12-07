@@ -2,7 +2,6 @@ package org.digevil.allinone.classic.repo;
 
 import org.apache.ibatis.annotations.*;
 import org.digevil.allinone.core.model.User;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,10 +13,22 @@ public interface UserMapper {
     List<User> findAll();
 
     @Select("SELECT * FROM all_user")
-    List<User> findAllPaged(@Param("pageable") Pageable pageable);
+    List<User> findAllPaged();
 
     @Select("SELECT * FROM all_user WHERE id = #{id}")
     User findById(@Param("id") UUID id);
+
+    @Select({"<script>",
+            "SELECT * FROM all_user",
+            "WHERE 1=1",
+            "<when test='example.id!=null'>",
+            "AND \"id\" = #{example.id}",
+            "</when>",
+            "<when test='example.name!=null'>",
+            "AND \"name\" = #{example.name}",
+            "</when>",
+            "</script>"})
+    List<User> findByExample(@Param("example") User example);
 
     /**
      * 参考:

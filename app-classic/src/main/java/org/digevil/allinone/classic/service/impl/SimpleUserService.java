@@ -26,6 +26,9 @@ public class SimpleUserService implements IUserService {
 
     @Override
     public Page<User> findAllPaged(Pageable pageable) {
+        /**
+         * 分页
+         */
         com.github.pagehelper.Page pages = PageHelper.startPage(pageable.getPageNumber(), pageable.getPageSize());
         return new PageImpl<>(userMapper.findAllPaged(pageable), pageable, pages.getTotal());
     }

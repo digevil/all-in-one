@@ -6,6 +6,11 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 
+
+/**
+ * 参考:
+ * https://cloud.spring.io/spring-cloud-gateway/reference/html/
+ */
 @SpringBootApplication
 public class GatewayScgApplication {
 

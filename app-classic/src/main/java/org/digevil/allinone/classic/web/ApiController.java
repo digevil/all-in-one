@@ -36,8 +36,8 @@ public class ApiController {
     }
 
     @GetMapping("/user/all/paged")
-    public Page<User> findAllUsersByPage() {
-        return userService.findAllPaged(PageRequest.of(0, 10));
+    public Page<User> findAllUsersByPage(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+        return userService.findAllPaged(PageRequest.of(pageNum, pageSize));
     }
 
     @GetMapping("/user/{id}")

@@ -1,5 +1,6 @@
 package org.digevil.allinone.classic.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import org.digevil.allinone.classic.repo.UserMapper;
 import org.digevil.allinone.classic.service.IUserService;
 import org.digevil.allinone.core.model.User;
@@ -25,7 +26,8 @@ public class SimpleUserService implements IUserService {
 
     @Override
     public Page<User> findAllPaged(Pageable pageable) {
-        return new PageImpl<>(userMapper.findAllPaged(pageable), pageable, 10);
+        com.github.pagehelper.Page pages = PageHelper.startPage(pageable.getPageNumber(), pageable.getPageSize());
+        return new PageImpl<>(userMapper.findAllPaged(pageable), pageable, pages.getTotal());
     }
 
     @Override

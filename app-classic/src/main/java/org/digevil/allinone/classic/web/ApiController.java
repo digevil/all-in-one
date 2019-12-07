@@ -5,6 +5,8 @@ import org.digevil.allinone.classic.service.IUserService;
 import org.digevil.allinone.core.model.Hello;
 import org.digevil.allinone.core.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,6 +33,11 @@ public class ApiController {
     @GetMapping("/user/all")
     public List<User> findAllUsers() {
         return userService.findAll();
+    }
+
+    @GetMapping("/user/all/paged")
+    public Page<User> findAllUsersByPage() {
+        return userService.findAllPaged(PageRequest.of(0, 10));
     }
 
     @GetMapping("/user/{id}")

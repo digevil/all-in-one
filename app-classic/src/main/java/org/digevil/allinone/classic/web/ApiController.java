@@ -1,10 +1,12 @@
 package org.digevil.allinone.classic.web;
 
 import com.google.common.collect.ImmutableMap;
+import org.digevil.allinone.classic.service.IRedisService;
 import org.digevil.allinone.classic.service.IUserService;
 import org.digevil.allinone.core.model.Hello;
 import org.digevil.allinone.core.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +25,11 @@ public class ApiController {
     private final AtomicLong helloCounter = new AtomicLong();
 
     @Autowired
+    @Qualifier(value = "cachedUserService")
     private IUserService userService;
+
+    @Autowired
+    private IRedisService redisService;
 
     @GetMapping("/hello")
     public Hello hello(@RequestParam(value = "name", defaultValue = "World") String name) {
@@ -64,5 +70,10 @@ public class ApiController {
     @DeleteMapping("/user/{id}")
     public void deleteUserById(@PathVariable UUID id) {
         userService.delete(id);
+    }
+
+    @GetMapping("/redis/get/{key}")
+    public String redisGetByKey(@PathVariable String key) {
+        return redisService.get(key);
     }
 }

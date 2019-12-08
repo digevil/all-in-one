@@ -6,6 +6,13 @@ import org.digevil.allinone.core.model.User;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * 通用参考:
+ * https://www.cnblogs.com/caizhaokai/p/10982727.html
+ * <p>
+ * 增强注解:
+ * https://www.jianshu.com/p/03642b807688
+ */
 @Mapper
 public interface UserMapper {
 

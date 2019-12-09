@@ -76,4 +76,9 @@ public class ApiController {
     public String redisGetByKey(@PathVariable String key) {
         return redisService.get(key);
     }
+
+    @PostMapping("/redis/set/{key}/{value}")
+    public void redisSetGetByKey(@PathVariable String key, @PathVariable String value) {
+        redisService.set(key, value);
+    }
 }

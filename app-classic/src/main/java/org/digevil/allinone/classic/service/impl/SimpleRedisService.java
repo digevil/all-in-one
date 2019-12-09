@@ -15,4 +15,9 @@ public class SimpleRedisService implements IRedisService {
     public String get(String key) {
         return redisTemplate.opsForValue().get(key);
     }
+
+    @Override
+    public void set(String key, String value) {
+        redisTemplate.opsForValue().set(key, value);
+    }
 }

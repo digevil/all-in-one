@@ -2,6 +2,9 @@ package org.digevil.allinone.core.model;
 
 import lombok.Data;
 
+/**
+ * @author toni
+ */
 @Data
 public class Hello {
     private String message;

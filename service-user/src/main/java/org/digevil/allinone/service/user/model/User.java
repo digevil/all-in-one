@@ -1,8 +1,9 @@
-package org.digevil.allinone.core.model;
+package org.digevil.allinone.service.user.model;
 
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 /**
@@ -15,12 +16,14 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "id", updatable = false)
+    private Integer id;
 
-    @Column(name = "uuid")
-    private UUID uuid;
+    @NotNull
+    @Column(name = "uuid", updatable = false, unique = true)
+    private String uuid;
 
+    @NotNull
     @Column(name = "name")
     private String name;
 }

@@ -8,11 +8,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.digevil.allinone.service.user.model.User;
 import org.digevil.allinone.service.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -67,5 +64,16 @@ public class UserController {
         newUser.setName(userName);
         newUser.setUuid(UUID.randomUUID().toString());
         return userService.save(newUser);
+    }
+
+    @PutMapping("/{id}")
+    public User update(@PathVariable("id") Integer id, @RequestBody User updated) {
+        updated.setId(id);
+        return userService.save(updated);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Integer id) {
+        userService.delete(id);
     }
 }

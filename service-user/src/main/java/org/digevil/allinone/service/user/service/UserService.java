@@ -37,4 +37,8 @@ public class UserService {
         return userRepository.findAll(example);
     }
 
+    public void delete(Integer userId) {
+        userRepository.deleteById(userId);
+    }
+
 }

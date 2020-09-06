@@ -44,4 +44,20 @@ class UserServiceApplicationTests {
         assertEquals(uuid, result.get().getUuid());
     }
 
+    @Test
+    void testUpdate() {
+        // TODO
+    }
+
+    @Test
+    void testInsert() {
+        // TODO
+    }
+
+    @Test
+    void testDelete() {
+        // TODO
+    }
+
+
 }

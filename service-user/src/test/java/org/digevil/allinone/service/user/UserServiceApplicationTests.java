@@ -16,6 +16,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @Slf4j
 class UserServiceApplicationTests {
 
+    private final String uuid = "5e00c197-eab3-11ea-ae6a-0242ac110003";
+    private final String name = "toni";
+
     @Autowired
     protected UserRepository userRepository;
 
@@ -27,11 +30,18 @@ class UserServiceApplicationTests {
     @Test
     void testExample() {
         User user = new User();
-        user.setName("toni");
+        user.setName(name);
         Optional<User> result = this.userRepository.findOne(Example.of(user));
         assertTrue(result.isPresent());
-        assertEquals("toni", result.get().getName());
-        assertEquals("5e00c197-eab3-11ea-ae6a-0242ac110003", result.get().getUuid());
+        assertEquals(name, result.get().getName());
+        assertEquals(uuid, result.get().getUuid());
+
+        user.setName(null);
+        user.setUuid(uuid);
+        result = this.userRepository.findOne(Example.of(user));
+        assertTrue(result.isPresent());
+        assertEquals(name, result.get().getName());
+        assertEquals(uuid, result.get().getUuid());
     }
 
 }

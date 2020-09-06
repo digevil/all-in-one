@@ -60,4 +60,12 @@ public class UserController {
         Optional.ofNullable(uuid).ifPresent(uid -> example.setUuid(uid));
         return userService.findAll(example);
     }
+
+    @PostMapping("/")
+    public User save(@RequestBody String userName) {
+        User newUser = new User();
+        newUser.setName(userName);
+        newUser.setUuid(UUID.randomUUID().toString());
+        return userService.save(newUser);
+    }
 }

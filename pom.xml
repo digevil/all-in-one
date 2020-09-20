@@ -10,6 +10,8 @@
         <module>gateway-zuul</module>
         <module>micro-services</module>
         <module>service-user</module>
+        <module>dubbo-order</module>
+        <module>dubbo-client</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

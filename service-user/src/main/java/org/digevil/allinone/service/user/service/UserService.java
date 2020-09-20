@@ -4,11 +4,13 @@ import org.digevil.allinone.service.user.exception.UserNotFound;
 import org.digevil.allinone.service.user.model.User;
 import org.digevil.allinone.service.user.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author: toni
@@ -16,18 +18,40 @@ import java.util.Optional;
  */
 @Service
 public class UserService {
+    /**
+     * 这里的单引号不能少，否则会报错，被识别是一个对象
+     */
+    private static final String CACHE_KEY = "'user_'";
+    private static final String DEMO_CACHE_NAME = "users";
 
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * @return
+     */
     public long countTotal() {
         return userRepository.count();
     }
 
+    /**
+     * 插入或者更新用户数据
+     *
+     * @param user
+     * @return
+     */
+    @CachePut(value = DEMO_CACHE_NAME, key = CACHE_KEY + "+#user.getId()")
     public User save(User user) {
         return userRepository.save(user);
     }
 
+    /**
+     *
+     * 根据用户 id 查找用户
+     * @param id
+     * @return
+     */
+    @Cacheable(value = DEMO_CACHE_NAME, key = "'user_'+#id")
     public User findById(Integer id) {
         return userRepository.findById(id).orElseThrow(UserNotFound::new);
     }
@@ -37,8 +61,9 @@ public class UserService {
         return userRepository.findAll(example);
     }
 
-    public void delete(Integer userId) {
-        userRepository.deleteById(userId);
+    @CacheEvict(value = DEMO_CACHE_NAME, key = CACHE_KEY + "+#id")
+    public void delete(Integer id) {
+        userRepository.deleteById(id);
     }
 
 }

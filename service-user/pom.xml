@@ -66,6 +66,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- API DOCUMENT -->
         <!-- open api definition url at /v3/api-docs -->
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -77,6 +78,17 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>${springdoc.openapi.version}</version>
+        </dependency>
+        <!-- CACHE -->
+        <!--开启 cache 缓存-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <!-- ehcache 缓存 -->
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
         </dependency>
     </dependencies>
 

@@ -1,6 +1,7 @@
 package org.digevil.allinone.service.user.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -34,7 +35,7 @@ public class UserController {
         return userService.countTotal();
     }
 
-    @Operation(summary = "Get user info by user id")
+    @Operation(summary = "根据用户id获取用户信息")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
@@ -49,7 +50,7 @@ public class UserController {
             )
     })
     @GetMapping("/find/{id}")
-    public User findById(@PathVariable("id") int id) {
+    public User findById(@Parameter(description = "需要查找的用户id") @PathVariable("id") int id) {
         return userService.findById(id);
     }
 

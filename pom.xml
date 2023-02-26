@@ -13,7 +13,7 @@
         <module>service-user</module>
         <module>dubbo-order</module>
         <module>dubbo-client</module>
-        <!--        <module>redis</module>-->
+        <module>lettuce</module>
         <module>idea-test</module>
     </modules>
     <parent>

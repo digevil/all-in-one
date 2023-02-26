@@ -1,3 +1,19 @@
+## DataBase(Mysql8)
+
+```bash
+## pull image
+docker pull mysql:8
+
+## create a container with mysql:8
+run -itd --name mysql-8-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:8
+
+## start / stop container
+docker start mysql-8-test
+docker stop mysql-8-test
+
+## then creat a user test/test and create db for test
+```
+
 ## DataBase(Postgres12)
 
 ```bash

@@ -63,7 +63,7 @@ public class ApiController {
 
     @PutMapping("/user/{id}")
     public void updateUser(@RequestBody User user, @PathVariable UUID id) {
-        user.setId(id);
+        user.setId(id.hashCode());
         userService.update(user);
     }
 

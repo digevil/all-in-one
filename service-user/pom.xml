@@ -53,7 +53,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+<!--            <optional>true</optional>-->
+            <version>1.18.26</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -74,11 +75,6 @@
             <version>${springdoc.openapi.version}</version>
         </dependency>
         <!-- swagger ui url @ swagger-ui.html -->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc.openapi.version}</version>
-        </dependency>
         <!-- CACHE -->
         <!--开启 cache 缓存-->
         <dependency>
@@ -98,24 +94,24 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-maven-plugin</artifactId>
-                <version>0.2</version>
-                <executions>
-                    <execution>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <apiDocsUrl>http://localhost:8080/v3/api-docs</apiDocsUrl>
-                    <outputFileName>openapi.json</outputFileName>
-                    <outputDir>${project.build.directory}</outputDir>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.springdoc</groupId>-->
+<!--                <artifactId>springdoc-openapi-maven-plugin</artifactId>-->
+<!--                <version>0.2</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>integration-test</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>generate</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <configuration>-->
+<!--                    <apiDocsUrl>http://localhost:8080/v3/api-docs</apiDocsUrl>-->
+<!--                    <outputFileName>openapi.json</outputFileName>-->
+<!--                    <outputDir>${project.build.directory}</outputDir>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 

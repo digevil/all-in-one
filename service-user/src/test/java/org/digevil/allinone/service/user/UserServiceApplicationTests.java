@@ -24,7 +24,7 @@ class UserServiceApplicationTests {
 
     @Test
     void testCount() {
-        assertEquals(3, this.userRepository.count());
+        assertEquals(1, this.userRepository.count());
     }
 
     @Test

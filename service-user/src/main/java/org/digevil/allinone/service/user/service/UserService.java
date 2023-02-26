@@ -3,13 +3,15 @@ package org.digevil.allinone.service.user.service;
 import org.digevil.allinone.service.user.exception.UserNotFound;
 import org.digevil.allinone.service.user.model.User;
 import org.digevil.allinone.service.user.repo.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -24,7 +26,7 @@ public class UserService {
     private static final String CACHE_KEY = "'user_'";
     private static final String DEMO_CACHE_NAME = "users";
 
-    @Autowired
+    @Resource
     private UserRepository userRepository;
 
     /**
@@ -59,6 +61,10 @@ public class UserService {
     public List<User> findAll(User user) {
         Example<User> example = Example.of(user);
         return userRepository.findAll(example);
+    }
+
+    public Page<User> findPaged(Pageable pageable) {
+       return userRepository.findAll(pageable);
     }
 
     @CacheEvict(value = DEMO_CACHE_NAME, key = CACHE_KEY + "+#id")

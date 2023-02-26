@@ -6,6 +6,7 @@
     <modules>
         <module>app-classic</module>
         <module>core</module>
+        <module>core-jdk19</module>
         <module>gateway-scg</module>
         <module>gateway-zuul</module>
         <module>micro-services</module>
@@ -36,7 +37,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <!--            <optional>true</optional>-->
             <version>1.18.26</version>
         </dependency>
         <dependency>
@@ -59,7 +59,6 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <optional>true</optional>
                 <version>1.18.26</version>
             </dependency>
         </dependencies>

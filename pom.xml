@@ -10,6 +10,7 @@
         <module>gateway-scg</module>
         <module>gateway-zuul</module>
         <module>micro-services</module>
+        <module>service-static</module>
         <module>service-user</module>
         <module>dubbo-order</module>
         <module>dubbo-client</module>
@@ -43,6 +44,10 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>25.1-jre</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
         </dependency>
 
     </dependencies>

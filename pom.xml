@@ -10,6 +10,7 @@
         <module>gateway-scg</module>
         <module>gateway-zuul</module>
         <module>micro-services</module>
+        <module>service-boot3</module>
         <module>service-static</module>
         <module>service-user</module>
         <module>dubbo-order</module>

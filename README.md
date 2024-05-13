@@ -36,12 +36,12 @@ docker stop test-pg12
 
 ```bash
 ## pull image
-docker pull redis:5.0
+docker pull redis:6
 
 ## create a container with redis:5.0
-docker run -itd --name test-redis5 -p 63791:6379 redis:5.0
+docker run -itd --name redis-6-test -p 6379:6379 -d redis:6 redis-server --save 60 1 --loglevel warning
 
 ## start / stop container
-docker start test-redis5
-docker stop test-redis5
+docker start redis-6-test
+docker stop redis-6-test
 ```
